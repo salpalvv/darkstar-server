@@ -1,0 +1,10 @@
+---
+- hosts: logstash
+  remote_user: root
+  vars:
+    firewall_allowed_tcp_ports:
+      - "22"
+      - "80"
+
+  roles:
+    - geerlingguy.firewall

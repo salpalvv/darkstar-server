@@ -1,0 +1,44 @@
+---
+    - name: start with an apt 
+      apt: name={{item}} state=latest
+      with_items: 
+        - git
+        - libmysqlclient-dev 
+        - libluajit-5.1-dev 
+        - libzmq3-dev 
+        - autoconf 
+        - pkg-config
+        - build-essential
+
+    - name: add ubuntu-toolchain-r repo
+      apt_repository: repo='ppa:ubuntu-toolchain-r/test'
+
+    - name: isntall g++-5
+      apt: name=g++-5  state=latest
+
+    - name: add symlinks
+      file: src=/usr/bin/{{item.src}} dest=/usr/bin/{{item.dest}} state=link
+      with_items: 
+          - {src: 'gcc-5', dest: 'gcc'}
+          - {src: 'g++-5', dest: 'g++'}
+          - {src: 'cpp-5', dest: 'cpp'} 
+
+    - name: git clone darkstar
+      git: repo=https://github.com/DarkstarProject/darkstar.git
+           dest=./darkstar
+           version=stable
+
+    - name: run autogen.sh
+      command: sh autogen.sh
+      args:
+        chdir: darkstar
+
+    - name: run configure 
+      command: ./configure --enable-debug=gdb
+      args:
+        chdir: darkstar
+
+    - name: make darkstar
+      command: make -j6
+      args:
+        chdir: darkstar

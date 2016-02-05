@@ -1,0 +1,56 @@
+---
+- hosts: darkstar
+  remote_user: root
+  vars:
+    firewall_allowed_tcp_ports:
+      - "22"
+      - "80"
+      - "54230"
+      - "54231"
+      - "54001"
+      - "54002"
+    firewall_allowed_tcp_ports:
+      - "54230"
+    mysql_root_password: 123qwe
+    mysql_databases:
+      - name: dspdb
+    mysql_users: 
+      - name: darkstar
+        password: 123qwe
+        priv: "dspdb.*:ALL"
+
+  roles:
+    - geerlingguy.firewall
+    - darkstar
+    - geerlingguy.mysql
+
+
+  tasks: 
+
+    - shell: ls darkstar/sql/*
+      register: path_files
+
+    - name: put the biscuits in the basket 
+      mysql_db: state=import name=dspdb target=/darkstar/sql/{{ item }}
+      with_items: path_files.stdout_lines
+
+    - name: set up zoneip
+
+
+    - name: update configuration files
+
+
+    # - name: start the dsconnect processes
+    #   command: ./dsconnect
+    #   args:
+    #     chdir: darkstar
+
+    # - name: start the dsgame processes
+    #   command: ./dsgame
+    #   args:
+    #     chdir: darkstar
+
+    # - name: start the dssearch processes
+    #   command: ./dssearch
+    #   args:
+    #     chdir: darkstar
