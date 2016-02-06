@@ -39,19 +39,16 @@
 #    - name: set up zoneip
 
     - name: start the dsconnect processes
-      command: ./dsconnect
-      async:5
+      command: screen -d -m -S dsconnect ./dsconnect
       args:
         chdir: darkstar
 
     - name: start the dsgame processes
-      command: ./dsgame
-      async:5
+      command: screen -d -m -S dsgame ./dsgame
       args:
         chdir: darkstar
 
     - name: start the dssearch processes
-      command: ./dssearch
-      async:5
+      command: screen -d -m -S dssearch ./dssearch
       args:
         chdir: darkstar
