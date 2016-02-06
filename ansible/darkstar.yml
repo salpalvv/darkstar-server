@@ -40,18 +40,18 @@
 
     - name: start the dsconnect processes
       command: ./dsconnect
+      async:5
       args:
-        async: 5
         chdir: darkstar
 
     - name: start the dsgame processes
       command: ./dsgame
+      async:5
       args:
-        async: 5
         chdir: darkstar
 
     - name: start the dssearch processes
       command: ./dssearch
+      async:5
       args:
-        async: 5
         chdir: darkstar
