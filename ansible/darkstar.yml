@@ -33,26 +33,25 @@
       register: path_files
 
     - name: put the biscuits in the basket 
-      mysql_db: state=import name=dspdb target=/darkstar/sql/{{ item }}
+      mysql_db: state=import name=dspdb target={{ item }}
       with_items: path_files.stdout_lines
 
-    - name: set up zoneip
-
-
-    - name: update configuration files
-
+#    - name: set up zoneip
 
     - name: start the dsconnect processes
       command: ./dsconnect
       args:
+        async: 5
         chdir: darkstar
 
     - name: start the dsgame processes
       command: ./dsgame
       args:
+        async: 5
         chdir: darkstar
 
     - name: start the dssearch processes
       command: ./dssearch
       args:
+        async: 5
         chdir: darkstar

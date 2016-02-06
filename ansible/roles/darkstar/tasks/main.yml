@@ -27,6 +27,7 @@
       git: repo=https://github.com/DarkstarProject/darkstar.git
            dest=./darkstar
            version=stable
+           depth=1
 
     - name: run autogen.sh
       command: sh autogen.sh
@@ -42,3 +43,8 @@
       command: make -j6
       args:
         chdir: darkstar
+
+    - name: copy conf files
+      copy: src={{item}} dest=darkstar/conf/
+      with_fileglob:
+        - conf/*
