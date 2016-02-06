@@ -5,10 +5,12 @@
     firewall_allowed_tcp_ports:
       - "22"
       - "80"
+      - "3306"
       - "54230"
       - "54231"
       - "54001"
       - "54002"
+      - "54003"
     firewall_allowed_tcp_ports:
       - "54230"
     mysql_root_password: 123qwe
@@ -40,17 +42,17 @@
     - name: update configuration files
 
 
-    # - name: start the dsconnect processes
-    #   command: ./dsconnect
-    #   args:
-    #     chdir: darkstar
+    - name: start the dsconnect processes
+      command: ./dsconnect
+      args:
+        chdir: darkstar
 
-    # - name: start the dsgame processes
-    #   command: ./dsgame
-    #   args:
-    #     chdir: darkstar
+    - name: start the dsgame processes
+      command: ./dsgame
+      args:
+        chdir: darkstar
 
-    # - name: start the dssearch processes
-    #   command: ./dssearch
-    #   args:
-    #     chdir: darkstar
+    - name: start the dssearch processes
+      command: ./dssearch
+      args:
+        chdir: darkstar
