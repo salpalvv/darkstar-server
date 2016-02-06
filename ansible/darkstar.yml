@@ -5,10 +5,12 @@
     firewall_allowed_tcp_ports:
       - "22"
       - "80"
+      - "3306"
       - "54230"
       - "54231"
       - "54001"
       - "54002"
+      - "54003"
     firewall_allowed_tcp_ports:
       - "54230"
     mysql_root_password: 123qwe
@@ -31,26 +33,25 @@
       register: path_files
 
     - name: put the biscuits in the basket 
-      mysql_db: state=import name=dspdb target=/darkstar/sql/{{ item }}
+      mysql_db: state=import name=dspdb target={{ item }}
       with_items: path_files.stdout_lines
 
-    - name: set up zoneip
+#    - name: set up zoneip
 
+    - name: start the dsconnect processes
+      command: ./dsconnect
+      async:5
+      args:
+        chdir: darkstar
 
-    - name: update configuration files
+    - name: start the dsgame processes
+      command: ./dsgame
+      async:5
+      args:
+        chdir: darkstar
 
-
-    # - name: start the dsconnect processes
-    #   command: ./dsconnect
-    #   args:
-    #     chdir: darkstar
-
-    # - name: start the dsgame processes
-    #   command: ./dsgame
-    #   args:
-    #     chdir: darkstar
-
-    # - name: start the dssearch processes
-    #   command: ./dssearch
-    #   args:
-    #     chdir: darkstar
+    - name: start the dssearch processes
+      command: ./dssearch
+      async:5
+      args:
+        chdir: darkstar
