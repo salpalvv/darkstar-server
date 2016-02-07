@@ -23,8 +23,8 @@
 
   roles:
     - geerlingguy.firewall
-    - darkstar
     - geerlingguy.mysql
+    - darkstar
 
 
   tasks: 
