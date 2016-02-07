@@ -24,6 +24,7 @@ Vagrant.configure("2") do |config|
       ansconfig.vm.provision "shell", path: "bootstraps/darkstar.sh"
       
       ansconfig.vm.network "forwarded_port", guest: 3306,  host: 3306
+      ansconfig.vm.network "forwarded_port", guest: 53445, host: 53445
       ansconfig.vm.network "forwarded_port", guest: 54230, host: 54230
       ansconfig.vm.network "forwarded_port", guest: 54231, host: 54231
       ansconfig.vm.network "forwarded_port", guest: 54001, host: 54001
