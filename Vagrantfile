@@ -33,8 +33,8 @@ Vagrant.configure("2") do |config|
       ansconfig.vm.network "forwarded_port", guest: 54230, host: 54230, protocol: "udp"
 
       ansconfig.vm.provider :virtualbox do |vb|
-        vb.memory = 4096
-        vb.cpus = 4
+        vb.memory = 2048
+        vb.cpus = 2
       end
     end
   end

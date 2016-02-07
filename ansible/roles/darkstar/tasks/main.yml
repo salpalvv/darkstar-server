@@ -34,6 +34,7 @@
            dest=./darkstar
            version=stable
            depth=1
+           force=yes
 
     - name: run autogen.sh
       command: sh autogen.sh
@@ -46,7 +47,7 @@
         chdir: darkstar
 
     - name: make darkstar
-      command: make -j6
+      command: make -j3
       args:
         chdir: darkstar
 
@@ -58,3 +59,27 @@
     - name: copy the cprrect version.info into darkstar
       copy: src=version.info dest=darkstar/
 
+    - shell: ls darkstar/sql/*
+      register: path_files
+
+    - name: put the biscuits in the basket 
+      mysql_db: state=import name=dspdb target={{ item }}
+      with_items: path_files.stdout_lines
+
+    - name: copy the darkstar upstart files 
+      copy: src={{item}} dest=/etc/init/
+      with_items:
+        - dsconnect.conf
+        - dsgame.conf
+        - dssearch.conf
+      tags:
+        - startDarkstar
+
+    - name: start the darkstar services
+      service: name={{item}} state=started
+      with_items: 
+        - dsconnect
+        - dsgame
+        - dssearch
+      tags:
+        - startDarkstar
