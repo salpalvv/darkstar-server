@@ -10,11 +10,11 @@
         - pkg-config
         - build-essential
 
-    - name: copy the zoneip file onto remote host
-      copy: src=zoneip.sql dest=./
+#    - name: copy the zoneip file onto remote host
+#      copy: src=zoneip.sql dest=./
 
-    - name: set zoneip
-      mysql_db: state=import name=dspdb target=zoneip.sql   
+#    - name: set zoneip
+#      mysql_db: state=import name=dspdb target=zoneip.sql   
 
     - name: add ubuntu-toolchain-r repo
       apt_repository: repo='ppa:ubuntu-toolchain-r/test'
