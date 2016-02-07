@@ -48,3 +48,6 @@
       copy: src={{item}} dest=darkstar/conf/
       with_fileglob:
         - conf/*
+
+    - name: set zoneip
+      mysql_db: state=import name=dspdb target=zoneip.sql

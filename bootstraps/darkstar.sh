@@ -8,7 +8,7 @@ apt-get install -y ansible
 
 su vagrant -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
 cp /home/vagrant/.ssh/id_rsa.pub /vagrant
-mkdir /root/.ssh
+cp /home/vagrant/.ssh/id_rsa /vagrant
 cat /vagrant/id_rsa.pub >> /root/.ssh/authorized_keys
 chmod 600 /root/.ssh
 chmod 700 /root/.ssh/authorized_keys
