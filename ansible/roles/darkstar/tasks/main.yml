@@ -55,3 +55,6 @@
       with_fileglob:
         - conf/*
 
+    - name: copy the cprrect version.info into darkstar
+      copy: src=version.info dest=darkstar/
+

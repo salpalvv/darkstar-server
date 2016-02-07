@@ -40,16 +40,16 @@
 #    - name: set up zoneip
 
     - name: start the dsconnect processes
-      command: screen -d -m -S dsconnect ./dsconnect
+      command: screen -d -m -S dsconnect ./dsconnect; sleep 1
       args:
         chdir: darkstar
 
     - name: start the dsgame processes
-      command: screen -d -m -S dsgame ./dsgame
+      command: screen -d -m -S dsgame ./dsgame; sleep 1
       args:
         chdir: darkstar
 
     - name: start the dssearch processes
-      command: screen -d -m -S dssearch ./dssearch
+      command: screen -d -m -S dssearch ./dssearch; sleep 1
       args:
         chdir: darkstar
