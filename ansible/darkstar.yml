@@ -11,7 +11,7 @@
       - "54001"
       - "54002"
       - "54003"
-    firewall_allowed_tcp_ports:
+    firewall_allowed_udp_ports:
       - "54230"
     mysql_root_password: 123qwe
     mysql_databases:
