@@ -11,7 +11,7 @@ Install Virtualbox
 # how to start the server 
 open a terminal / cmd prompt / shell / what have you
 
-$ `vagrant plugin install vagrant-vbguest`
+`vagrant plugin install vagrant-vbguest`
 
 (Note that you only need to do this the first time. )
 
@@ -23,11 +23,11 @@ change directory to project root
 
 
 
-$ `vagrant up`
+`vagrant up`
 
-$ `vagrant ssh`
+`vagrant ssh`
 
-$ `cd ansible`
+`cd ansible`
 
-$ `ansible-playbook darkstar.yml`
+`ansible-playbook darkstar.yml`
 
