@@ -17,6 +17,8 @@ Note that you will need to edit in your WAN ip to darkstar-server/ansible/roles/
 
 change directory to project root
 
+
+
 vagrant up
 
 vagrant ssh
