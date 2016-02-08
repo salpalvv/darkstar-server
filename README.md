@@ -17,7 +17,7 @@ $ vagrant plugin install vagrant-vbguest
 
 git clone this project.
 
-Note that you will need to edit in your WAN ip to darkstar-server/ansible/roles/darkstar/files/zoneip.sql in place of 127.0.0.1
+(Note that you will need to edit in your WAN ip to darkstar-server/ansible/roles/darkstar/files/zoneip.sql in place of 127.0.0.1)
 
 change directory to project root
 
