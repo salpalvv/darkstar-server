@@ -17,3 +17,4 @@ vagrant up
 vagrant ssh
 cd ansible
 ansible-playbook darkstar.yml
+
