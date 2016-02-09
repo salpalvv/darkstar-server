@@ -35,6 +35,8 @@ install ansible onto a machine for running the scripts.
 
 edit ansible/hosts IP entry for [darkstar] to the appropriate IP address
 
+edit your remote server ip at darkstar-server/ansible/roles/darkstar/files/zoneip.sql in place of 127.0.0.1
+
 copy your ssh public key into the remote server's /root/.ssh/authorized_keys
 
 see: https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
