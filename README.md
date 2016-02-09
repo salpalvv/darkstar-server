@@ -21,8 +21,6 @@ git clone this project.
 
 change directory to project root
 
-
-
 `vagrant up`
 
 `vagrant ssh`
@@ -31,3 +29,18 @@ change directory to project root
 
 `ansible-playbook darkstar.yml`
 
+
+# provision a remote server
+install ansible onto a machine
+
+edit ansible/hosts IP entry for [darkstar] to the appropriate IP address
+
+copy your ssh public key into the remote server's root user
+
+from machine with ansible: 
+
+`cd ansible`
+
+`ansible-galaxy install -r requirements.yml`
+
+`ansible-playbook darkstar.yml`
