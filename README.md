@@ -30,12 +30,12 @@ change directory to project root
 `ansible-playbook darkstar.yml`
 
 
-# provision a remote server
+# provision a remote *nix server
 install ansible onto a machine
 
 edit ansible/hosts IP entry for [darkstar] to the appropriate IP address
 
-copy your ssh public key into the remote server's root user
+copy your ssh public key into the remote server's /root/.ssh/authorized_keys
 
 from machine with ansible: 
 
