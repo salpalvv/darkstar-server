@@ -30,14 +30,18 @@ change directory to project root
 `ansible-playbook darkstar.yml`
 
 
-# provision a remote *nix server
-install ansible onto a machine
+# provision a remote ubuntu 14.04 server
+install ansible onto a machine for running the scripts. 
 
 edit ansible/hosts IP entry for [darkstar] to the appropriate IP address
 
 copy your ssh public key into the remote server's /root/.ssh/authorized_keys
 
+see: https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
+
 from machine with ansible: 
+
+git clone this project.
 
 `cd ansible`
 
