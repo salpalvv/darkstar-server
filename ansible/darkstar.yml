@@ -23,7 +23,7 @@
         priv: "dspdb.*:ALL"
 
   roles:
-    - geerlingguy.firewall
-    - geerlingguy.mysql
+    - firewall
+    - mysql
     - darkstar
 

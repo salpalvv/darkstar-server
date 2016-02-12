@@ -14,5 +14,3 @@ chmod 600 /root/.ssh
 chmod 700 /root/.ssh/authorized_keys
 
 cp -r /vagrant/ansible /home/vagrant/
-
-ansible-galaxy install -r /home/vagrant/ansible/requirements.yml
