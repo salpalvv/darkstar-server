@@ -10,12 +10,6 @@
         - pkg-config
         - build-essential
 
-    - name: remove g++ and cpp 
-      apt: name={{item}} state=removed
-      with_items: 
-        - g++
-        - cpp
-
 #    - name: copy the zoneip file onto remote host
 #      copy: src=zoneip.sql dest=./
 
