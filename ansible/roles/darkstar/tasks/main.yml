@@ -50,7 +50,7 @@
         chdir: darkstar
 
     - name: make darkstar
-      command: make -j3
+      command: make
       args:
         chdir: darkstar
 
