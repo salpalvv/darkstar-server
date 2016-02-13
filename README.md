@@ -47,6 +47,4 @@ git clone this project.
 
 `cd ansible`
 
-`ansible-galaxy install -r requirements.yml`
-
 `ansible-playbook darkstar.yml`

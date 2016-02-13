@@ -1,18 +1,14 @@
 packages = [
   'git',
+  'mysql',
   'wget',
   'rsync',
   'ansible']
 
 ports = [
   "22",
-  "53445",
-  "54230",
-  "54231",
-  "54001",
-  "54002",
-  "54003",
-  "54230"]
+  "80",
+  "3306"]
 
 
 shared_examples 'darkstar::init' do

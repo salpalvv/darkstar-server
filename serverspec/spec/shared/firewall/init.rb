@@ -1,11 +1,12 @@
 packages = [
   'git',
   'wget',
-  'rsync',
-  'ansible']
+  'rsync']
 
 ports = [
   "22",
+  "80",
+  "3306",
   "53445",
   "54230",
   "54231",
