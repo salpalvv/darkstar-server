@@ -11,9 +11,9 @@ ports = [
   "3306"]
 
 
-shared_examples 'darkstar::init' do
+shared_examples 'mysql::init' do
 
-  describe "CentOS Operating System Checks" do
+  describe "mysql Checks" do
 
     packages.each do|p|
       describe package(p) do

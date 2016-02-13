@@ -16,9 +16,9 @@ ports = [
   "54230"]
 
 
-shared_examples 'darkstar::init' do
+shared_examples 'firewall::init' do
 
-  describe "CentOS Operating System Checks" do
+  describe "Firewall Checks" do
 
     packages.each do|p|
       describe package(p) do

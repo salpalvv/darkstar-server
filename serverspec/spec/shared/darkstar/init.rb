@@ -22,7 +22,7 @@ services = [
 
 shared_examples 'darkstar::init' do
 
-  describe "CentOS Operating System Checks" do
+  describe "Darkstar Checks" do
 
     packages.each do|p|
       describe package(p) do
