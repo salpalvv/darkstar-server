@@ -1,6 +1,7 @@
 ---
 - hosts: darkstar
   remote_user: root
+  become: yes
   vars:
     firewall_allowed_tcp_ports:
       - "22"
@@ -23,7 +24,7 @@
         priv: "dspdb.*:ALL"
 
   roles:
-    - { firewall, sudo: yes }
-    - { mysql, sudo: yes }
-    - { darkstar, sudo: yes }
+    - firewall
+    - mysql
+    - darkstar
 

@@ -14,6 +14,11 @@ ports = [
   "54003",
   "54230"]
 
+services = [
+  "./dsconnect",
+  "./dsgame",
+  "./dssearch"]
+
 
 shared_examples 'darkstar::init' do
 
@@ -28,6 +33,12 @@ shared_examples 'darkstar::init' do
     ports.each do|p|
       describe port(p) do
         it { should be_listening }
+      end
+    end
+
+    services.each do|p|
+      describe service(p) do
+        it { should be_running }
       end
     end
 
