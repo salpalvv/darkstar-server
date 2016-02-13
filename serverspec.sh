@@ -1,4 +1,5 @@
 #!/bin/sh
+sudo gem install serverspec
 cd serverspec
-rake spec
+sudo rake spec
 
