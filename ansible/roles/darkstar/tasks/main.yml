@@ -9,6 +9,10 @@
         - autoconf 
         - pkg-config
         - build-essential
+
+    - name: remove g++ and cpp 
+      apt: name={{item}} state=removed
+      with_items: 
         - g++
         - cpp
 
