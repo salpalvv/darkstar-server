@@ -45,7 +45,7 @@
         chdir: darkstar
 
     - name: run configure 
-      command: ./configure --enable-debug=gdb
+      command: ./configure
       args:
         chdir: darkstar
 
