@@ -24,7 +24,6 @@
 
     - name: add symlinks
       file: src=/usr/bin/{{item.src}} dest=/usr/bin/{{item.dest}} state=link
-      become: true
       with_items: 
           - {src: 'gcc-5', dest: 'gcc'}
           - {src: 'g++-5', dest: 'g++'}

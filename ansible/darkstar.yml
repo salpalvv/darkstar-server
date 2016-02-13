@@ -23,7 +23,7 @@
         priv: "dspdb.*:ALL"
 
   roles:
-    - firewall
-    - mysql
-    - darkstar
+    - { firewall, sudo: yes }
+    - { mysql, sudo: yes }
+    - { darkstar, sudo: yes }
 
