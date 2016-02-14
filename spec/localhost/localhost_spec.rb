@@ -2,7 +2,8 @@ require 'spec_helper'
 
 packages = [
   'git',
-  'mysql',
+  'mysql-common',
+  'mysql-server',
   'wget',
   'rsync',
   'ansible']
