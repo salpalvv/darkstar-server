@@ -14,5 +14,4 @@ cd ..
 
 sudo gem install bundler serverspec
 
-cd serverspec
 sudo rake spec
