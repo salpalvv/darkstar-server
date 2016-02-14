@@ -24,9 +24,6 @@ services = [
   "./dsgame",
   "./dssearch"]
 
-
-shared_examples 'darkstar::init' do
-
   describe "Darkstar Checks" do
 
     packages.each do|p|
@@ -48,5 +45,3 @@ shared_examples 'darkstar::init' do
     end
 
   end
-
-end

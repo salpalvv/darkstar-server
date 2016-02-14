@@ -13,5 +13,3 @@ sudo make install > /dev/null 2>&1
 cd ..
 
 sudo gem install bundler serverspec
-
-sudo rake spec
