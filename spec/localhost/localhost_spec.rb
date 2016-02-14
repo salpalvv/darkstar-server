@@ -5,8 +5,7 @@ packages = [
   'mysql-common',
   'mysql-server',
   'wget',
-  'rsync',
-  'ansible']
+  'rsync']
 
 ports = [
   "22",

@@ -11,11 +11,13 @@ before_install:
   - sudo apt-get -y autoremove
   - sudo apt-get -y autoclean
   - sudo rm -rf /var/lib/mysql
-  - sudo apt-get install -y software-properties-common
-  - sudo apt-add-repository -y ppa:ansible/ansible
-  - sudo apt-get update
-  - sudo apt-get install -y ansible
 
+
+  # remove firewall
+
+install:
+  # Install Ansible.
+  - pip install ansible
 
 script:
   # Check the role/playbook's syntax.
