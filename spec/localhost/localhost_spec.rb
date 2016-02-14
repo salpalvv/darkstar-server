@@ -7,7 +7,7 @@ packages = [
   'wget',
   'rsync']
 
-ports = [
+portsTCP = [
   "22",
   "80",
   "3306",
@@ -16,10 +16,12 @@ ports = [
   "54231",
   "54001",
   "54002",
-  "54003",
+  "54003"]
+
+portsUDP = [
   "54230"]
 
-services = [
+processes = [
   "./dsconnect",
   "./dsgame",
   "./dssearch"]
@@ -32,14 +34,20 @@ services = [
       end
     end
 
-    ports.each do|p|
+    portsTCP.each do|p|
       describe port(p) do
-        it { should be_listening }
+        it { should be_listening.with('tcp') }
       end
     end
 
-    services.each do|p|
-      describe service(p) do
+    portsUDP.each do|p|
+      describe port(p) do
+        it { should be_listening.with('udp') }
+      end
+    end
+
+    processes.each do|p|
+      describe process(p) do
         it { should be_running }
       end
     end
