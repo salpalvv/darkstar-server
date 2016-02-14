@@ -22,4 +22,4 @@ ruby -v
 sudo gem install bundler serverspec
 
 cd serverspec
-rake spec
+sudo rake spec
