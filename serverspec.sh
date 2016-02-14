@@ -12,7 +12,7 @@ make > /dev/null 2>&1
 make install > /dev/null 2>&1
 cd ..
 
-gem install bundler serverspec
+sudo gem install bundler serverspec
 
 cd serverspec
-rake spec
+sudo rake spec

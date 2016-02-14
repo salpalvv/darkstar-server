@@ -1,11 +1,14 @@
 packages = [
   'git',
+  'mysql',
   'wget',
   'rsync',
   'ansible']
 
 ports = [
   "22",
+  "80",
+  "3306",
   "53445",
   "54230",
   "54231",

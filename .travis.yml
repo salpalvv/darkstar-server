@@ -33,4 +33,4 @@ script:
   #   || (echo 'Idempotence test: fail' && exit 1)
 
   # run serverspec to confirm configuration
-  - "sudo sh serverspec.sh"
+  - "sh serverspec.sh"
