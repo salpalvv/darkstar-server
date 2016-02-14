@@ -36,4 +36,4 @@ script:
   # prereq serverspec to confirm configuration
   - sh serverspec.sh
   # run the spec test
-  - rake spec
+  - sudo rake spec
