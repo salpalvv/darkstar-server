@@ -23,7 +23,7 @@ script:
   - "ansible-playbook -i ansible/localhosts ansible/darkstar.yml --syntax-check"
 
   # Run the role/playbook with ansible-playbook.
-  - "ansible-playbook -i ansible/localhosts ansible/darkstar.yml --connection=local --sudo"
+  - "ansible-playbook -i ansible/localhosts ansible/darkstar.yml --connection=local"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   # - >
