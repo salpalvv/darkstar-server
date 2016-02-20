@@ -2,6 +2,4 @@
 - hosts:all
   remote_user: root
   - include: darkstar.yml
-  - include: elasticsearch.yml
-  - include: logstash.yml
-
+  - include: elk.yml

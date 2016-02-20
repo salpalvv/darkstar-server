@@ -1,0 +1,14 @@
+---
+- hosts: elk
+  become: true
+  vars:
+    firewall_allowed_tcp_ports:
+      - "22"
+  roles:
+    - firewall
+    - java
+    - elasticsearch
+    - kibana
+    - nginx
+    - logstash
+    - ssl

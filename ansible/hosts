@@ -1,5 +1,7 @@
 [darkstar]
 10.10.10.2
+[elk]
+10.10.10.3
 [elasticsearch]
 #10.10.10.3
 [logstash]

@@ -22,9 +22,11 @@ install:
 script:
   # Check the role/playbook's syntax.
   - "ansible-playbook -i ansible/localhosts ansible/darkstar.yml --syntax-check"
+  - "ansible-playbook -i ansible/localhosts ansible/elk.yml --syntax-check"
 
   # Run the role/playbook with ansible-playbook.
   - "ansible-playbook -i ansible/localhosts ansible/darkstar.yml --connection=local"
+  - "ansible-playbook -i ansible/localhosts ansible/elk.yml --connection=local"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   # - >

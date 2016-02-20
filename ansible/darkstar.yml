@@ -17,13 +17,13 @@
     mysql_root_password: 123qwe
     mysql_databases:
       - name: dspdb
-    mysql_users: 
+    mysql_users:
       - name: darkstar
         password: 123qwe
         priv: "dspdb.*:ALL"
 
   roles:
     - firewall
+    - filebeat
     - mysql
     - darkstar
-
