@@ -4,11 +4,17 @@
   vars:
     firewall_allowed_tcp_ports:
       - "22"
+      - "80"
+      - "5000"
+      - "5044"
+      - "9200"
+    firewall_allowed_udp_ports:
+      - "5000"
   roles:
     - firewall
     - java
+    - nginx
     - elasticsearch
     - kibana
-    - nginx
     - logstash
     - ssl

@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
       nodeconfig.vm.hostname = node[:hostname] + ".test.local"
       nodeconfig.vm.network :private_network, ip: node[:ip]
 
-#      nodeconfig.vm.provision "shell", path: "bootstraps/elk.sh"
+      nodeconfig.vm.provision "shell", path: "bootstraps/elk.sh"
 
       nodeconfig.vm.provider :virtualbox do |v|
         v.memory = 4096

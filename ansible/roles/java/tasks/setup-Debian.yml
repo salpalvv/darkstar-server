@@ -1,0 +1,13 @@
+---
+- name: add the openjdk repo
+  apt_repository: repo='ppa:openjdk-r/ppa'
+
+- name: Update apt cache.
+  apt: update_cache=yes cache_valid_time=86400
+
+- name: Ensure Java is installed.
+  apt: "name={{ item }} state=installed"
+  with_items: java_packages
+
+- name: correct java version selected
+  alternatives: name=java path=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
