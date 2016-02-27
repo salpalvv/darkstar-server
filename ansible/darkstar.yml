@@ -1,6 +1,6 @@
 ---
 - hosts: darkstar
-  remote_user: root
+  become: true
   vars:
     firewall_allowed_tcp_ports:
       - "22"

@@ -1,0 +1,50 @@
+---
+- hosts: darkstar
+
+  tasks: 
+  - name: stop services
+    services: name={{item}} state=started
+    with_items:
+    - dsconnect
+    - dsgame
+    - dssearch
+
+  - name: dump database
+    mysql_db: state=dump name=dspdb target=backupDump.sql
+
+  - name: git clone darkstar
+    git: repo=https://github.com/DarkstarProject/darkstar.git
+         dest=./darkstar
+         version=stable
+         depth=1
+         force=yes
+
+  - name: run autogen.sh
+    command: sh autogen.sh
+    args:
+      chdir: darkstar
+
+  - name: run configure 
+    command: ./configure --enable-debug=gdb
+    args:
+      chdir: darkstar
+
+  - name: make darkstar
+    command: make -j3
+    args:
+      chdir: darkstar
+
+  - name: copy conf files
+    copy: src={{item}} dest=darkstar/conf/
+    with_fileglob:
+    - conf/*
+
+  - name: restart database
+    service: name=mysql state=restarted
+
+  - name: start darkstar services
+    service: name={{item}} state=started
+    with_items: 
+    - dsconnect
+    - dsgame
+    - dssearch

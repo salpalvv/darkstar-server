@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/salpalvv/darkstar-server.svg?branch=develop)](https://travis-ci.org/salpalvv/darkstar-server)
+
 # darkstar-server
 Vagrantfile and Ansible Playbook to create Ubuntu host and provision with darkstar server. 
 
@@ -46,7 +48,5 @@ from machine with ansible:
 git clone this project.
 
 `cd ansible`
-
-`ansible-galaxy install -r requirements.yml`
 
 `ansible-playbook darkstar.yml`

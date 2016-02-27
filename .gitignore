@@ -3,3 +3,4 @@ id_rsa.pub
 id_rsa
 *.log
 *.box
+.DS_Store

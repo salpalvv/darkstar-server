@@ -1,0 +1,6 @@
+[darkstar]
+localhost
+[elasticsearch]
+#10.10.10.3
+[logstash]
+#10.10.10.4

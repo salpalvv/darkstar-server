@@ -23,7 +23,10 @@
       apt: name=g++-5  state=latest
 
     - name: add symlinks
-      file: src=/usr/bin/{{item.src}} dest=/usr/bin/{{item.dest}} state=link
+      file: 
+        src: /usr/bin/{{item.src}} 
+        path: /usr/bin/{{item.dest}} 
+        state: link
       with_items: 
           - {src: 'gcc-5', dest: 'gcc'}
           - {src: 'g++-5', dest: 'g++'}
@@ -42,12 +45,12 @@
         chdir: darkstar
 
     - name: run configure 
-      command: ./configure --enable-debug=gdb
+      command: ./configure
       args:
         chdir: darkstar
 
     - name: make darkstar
-      command: make -j3
+      command: make
       args:
         chdir: darkstar
 
@@ -56,8 +59,8 @@
       with_fileglob:
         - conf/*
 
-    - name: copy the cprrect version.info into darkstar
-      copy: src=version.info dest=darkstar/
+    # - name: copy the correct version.info into darkstar
+    #   copy: src=version.info dest=darkstar/
 
     - shell: ls darkstar/sql/*
       register: path_files
