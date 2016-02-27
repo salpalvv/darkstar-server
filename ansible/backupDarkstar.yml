@@ -1,22 +1,22 @@
 ---
 
-hosts: darkstar
+  -hosts: darkstar
 
-tasks: 
+    tasks:
 
-- name: stop services
-  service: name={{item}} state=stopped
-  with_items: 
-  - dsconnect
-  - dsgame
-  - dssearch
+    - name: stop services
+      service: name={{item}} state=stopped
+      with_items:
+      - dsconnect
+      - dsgame
+      - dssearch
 
-- name: dump db
-  mysql_db: state=dump name=dspdb target=dump.sql
+    - name: dump db
+      mysql_db: state=dump name=dspdb target=dump.sql
 
-- name: start services
-  service: name={{item}} state=started
-  with_items:
-  - dsconnect
-  - dsgame
-  - dssearch
+    - name: start services
+      service: name={{item}} state=started
+      with_items:
+      - dsconnect
+      - dsgame
+      - dssearch
