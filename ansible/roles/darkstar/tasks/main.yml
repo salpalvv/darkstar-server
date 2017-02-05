@@ -1,20 +1,14 @@
 ---
-    - name: start with an apt 
+    - name: start with an apt
       apt: name={{item}} state=latest
-      with_items: 
+      with_items:
         - git
-        - libmysqlclient-dev 
-        - libluajit-5.1-dev 
-        - libzmq3-dev 
-        - autoconf 
+        - libmysqlclient-dev
+        - libluajit-5.1-dev
+        - libzmq3-dev
+        - autoconf
         - pkg-config
         - build-essential
-
-#    - name: copy the zoneip file onto remote host
-#      copy: src=zoneip.sql dest=./
-
-#    - name: set zoneip
-#      mysql_db: state=import name=dspdb target=zoneip.sql   
 
     - name: add ubuntu-toolchain-r repo
       apt_repository: repo='ppa:ubuntu-toolchain-r/test'
@@ -23,14 +17,14 @@
       apt: name=g++-5  state=latest
 
     - name: add symlinks
-      file: 
-        src: /usr/bin/{{item.src}} 
-        path: /usr/bin/{{item.dest}} 
+      file:
+        src: /usr/bin/{{item.src}}
+        path: /usr/bin/{{item.dest}}
         state: link
-      with_items: 
+      with_items:
           - {src: 'gcc-5', dest: 'gcc'}
           - {src: 'g++-5', dest: 'g++'}
-          - {src: 'cpp-5', dest: 'cpp'} 
+          - {src: 'cpp-5', dest: 'cpp'}
 
     - name: git clone darkstar
       git: repo=https://github.com/DarkstarProject/darkstar.git
@@ -44,7 +38,7 @@
       args:
         chdir: darkstar
 
-    - name: run configure 
+    - name: run configure
       command: ./configure
       args:
         chdir: darkstar
@@ -59,17 +53,14 @@
       with_fileglob:
         - conf/*
 
-    # - name: copy the correct version.info into darkstar
-    #   copy: src=version.info dest=darkstar/
-
     - shell: ls darkstar/sql/*
       register: path_files
 
-    - name: put the biscuits in the basket 
+    - name: put the biscuits in the basket
       mysql_db: state=import name=dspdb target={{ item }}
       with_items: path_files.stdout_lines
 
-    - name: copy the darkstar upstart files 
+    - name: copy the darkstar upstart files
       copy: src={{item}} dest=/etc/init/
       with_items:
         - dsconnect.conf
@@ -80,7 +71,7 @@
 
     - name: start the darkstar services
       service: name={{item}} state=started
-      with_items: 
+      with_items:
         - dsconnect
         - dsgame
         - dssearch

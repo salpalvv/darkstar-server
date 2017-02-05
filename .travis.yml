@@ -33,7 +33,5 @@ script:
   #   && (echo 'Idempotence test: pass' && exit 0)
   #   || (echo 'Idempotence test: fail' && exit 1)
 
-  # prereq serverspec to confirm configuration
-  - sh serverspec.sh
-  # run the spec test
-  - sudo rake spec
+  # install goss
+  # validate
