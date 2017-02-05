@@ -2,7 +2,6 @@
 
     - name: add ubuntu-toolchain-r repo
       apt_repository: repo='ppa:ubuntu-toolchain-r/test'
-      become: true
 
     - name: start with an apt
       apt: name={{item}} state=latest
@@ -16,7 +15,6 @@
         - build-essential
         - htop
         - g++-5
-      become: true
 
     - name: add symlinks
       file:
@@ -28,11 +26,11 @@
           - {src: 'g++-5', dest: 'g++'}
           - {src: 'cpp-5', dest: 'cpp'}
 
-#    - name: copy the zoneip file onto remote host
-#      copy: src=zoneip.sql dest=./
+    - name: copy the zoneip file onto remote host
+      copy: src=zoneip.sql dest=./
 
-#    - name: set zoneip
-#      mysql_db: state=import name=dspdb target=zoneip.sql
+    - name: set zoneip
+      mysql_db: state=import name=dspdb target=zoneip.sql
 
     - name: Check that the darkstar repo exists
       stat: path=darkstar/README.md
@@ -66,8 +64,8 @@
       with_fileglob:
         - conf/*
 
-    # - name: copy the correct version.info into darkstar
-    #   copy: src=version.info dest=darkstar/
+    - name: copy the correct version.info into darkstar
+      copy: src=version.info dest=darkstar/
 
     - shell: ls darkstar/sql/*
       register: path_files
@@ -75,6 +73,12 @@
     - name: put the biscuits in the basket
       mysql_db: state=import name=dspdb target={{ item }}
       with_items: path_files.stdout_lines
+
+    - name: chown darkstar directory
+      file: path=darkstar
+            state=directory
+            mode=0777
+            recurse=yes
 
       #- name: copy the darkstar upstart files
       #- copy: src={{item}} dest=/etc/init/

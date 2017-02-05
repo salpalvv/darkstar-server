@@ -1,2 +1,2 @@
-UPDATE zone_settings SET zoneip = '127.0.0.1';
+UPDATE zone_settings SET zoneip = '192.168.0.3';
 exit
