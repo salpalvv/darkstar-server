@@ -26,12 +26,6 @@
           - {src: 'g++-5', dest: 'g++'}
           - {src: 'cpp-5', dest: 'cpp'}
 
-    - name: copy the zoneip file onto remote host
-      copy: src=zoneip.sql dest=./
-
-    - name: set zoneip
-      mysql_db: state=import name=dspdb target=zoneip.sql
-
     - name: Check that the darkstar repo exists
       stat: path=darkstar/README.md
       register: stat_darkstar
@@ -73,6 +67,12 @@
     - name: put the biscuits in the basket
       mysql_db: state=import name=dspdb target={{ item }}
       with_items: path_files.stdout_lines
+
+    - name: copy the zoneip file onto remote host
+      copy: src=zoneip.sql dest=./
+
+    - name: set zoneip
+      mysql_db: state=import name=dspdb target=zoneip.sql
 
     - name: chown darkstar directory
       file: path=darkstar
