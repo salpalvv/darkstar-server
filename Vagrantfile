@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
       ansconfig.vm.network "forwarded_port", guest: 3306,  host: 3306
       ansconfig.vm.network "forwarded_port", guest: 53445, host: 53445
       ansconfig.vm.network "forwarded_port", guest: 54230, host: 54230
-      #ansconfig.vm.network "forwarded_port", guest: 54231, host: 54231
+      ansconfig.vm.network "forwarded_port", guest: 54231, host: 54231
       ansconfig.vm.network "forwarded_port", guest: 54001, host: 54001
       ansconfig.vm.network "forwarded_port", guest: 54002, host: 54002
       ansconfig.vm.network "forwarded_port", guest: 54003, host: 54003

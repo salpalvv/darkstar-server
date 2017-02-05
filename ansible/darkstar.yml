@@ -1,7 +1,6 @@
 ---
 - hosts: darkstar
   remote_user: vagrant
-  become: true
   vars:
     firewall_allowed_tcp_ports:
       - "22"
@@ -21,6 +20,7 @@
     mysql_users:
       - name: darkstar
         password: 123qwe
+        host: "%"
         priv: "dspdb.*:ALL"
 
   roles:

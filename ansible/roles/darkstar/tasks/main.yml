@@ -1,4 +1,9 @@
 ---
+
+    - name: add ubuntu-toolchain-r repo
+      apt_repository: repo='ppa:ubuntu-toolchain-r/test'
+      become: true
+
     - name: start with an apt
       apt: name={{item}} state=latest
       with_items:
@@ -10,12 +15,8 @@
         - pkg-config
         - build-essential
         - htop
-
-    - name: add ubuntu-toolchain-r repo
-      apt_repository: repo='ppa:ubuntu-toolchain-r/test'
-
-    - name: install g++-5
-      apt: name=g++-5  state=latest
+        - g++-5
+      become: true
 
     - name: add symlinks
       file:
@@ -27,12 +28,22 @@
           - {src: 'g++-5', dest: 'g++'}
           - {src: 'cpp-5', dest: 'cpp'}
 
+#    - name: copy the zoneip file onto remote host
+#      copy: src=zoneip.sql dest=./
+
+#    - name: set zoneip
+#      mysql_db: state=import name=dspdb target=zoneip.sql
+
     - name: Check that the darkstar repo exists
       stat: path=darkstar/README.md
       register: stat_darkstar
 
     - name: git clone darkstar
-      command: git clone -b stable --depth=1 https://github.com/DarkstarProject/darkstar.git
+      git: repo=https://github.com/DarkstarProject/darkstar.git
+           dest=./darkstar
+           version=stable
+           depth=1
+           force=yes
       when: stat_darkstar.stat.exists == False
 
     - name: run autogen.sh
@@ -54,6 +65,9 @@
       copy: src={{item}} dest=darkstar/conf/
       with_fileglob:
         - conf/*
+
+    # - name: copy the correct version.info into darkstar
+    #   copy: src=version.info dest=darkstar/
 
     - shell: ls darkstar/sql/*
       register: path_files
